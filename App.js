@@ -1,9 +1,21 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
 import { Image } from 'expo-image';
 import { LinearGradient } from 'expo-linear-gradient';
+import * as Location from 'expo-location';
+import * as Notifications from 'expo-notifications'
 
 export default function App() {
+  async function requestLocationPermissions() {
+    const results = await Location.requestForegroundPermissionsAsync();
+    console.log(results);
+  }
+
+  async function requestNotificationPermissions() {
+    const results = await Notifications.requestPermissionsAsync();
+    console.log(results);
+  }
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -29,7 +41,10 @@ export default function App() {
         New Architecture: <Text style={{ fontWeight: 'bold' }}>Enabled</Text>
       </Text>
 
-      < StatusBar style="auto" />
+      <Button onPress={requestLocationPermissions} title="Request Location Permissions" />
+      <Button onPress={requestNotificationPermissions} title="Request Notification Permissions" />
+
+      <StatusBar style="auto" />
     </View>
   );
 }
