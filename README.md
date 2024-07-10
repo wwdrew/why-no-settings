@@ -1,8 +1,16 @@
-# [New Architecture Example](https://reactnative.dev/docs/the-new-architecture/landing-page)
+# expo-location issue example
 
-## 🚀 How to use
+Build and run the development build using:
 
-> `npx create-expo-app@latest -e with-new-arch`
+```sh
+npm run ios
+```
 
-- Install packages with `yarn` or `npm install`.
-- Run `npx expo run:ios` and/or `npx expo run:android`. Requires native toolchains to be installed.
+## Reproduction
+
+1. Install and run the app.
+2. Open Settings app to verify the app isn't listed
+3. Open app and request Location permissions
+4. Open Settings app - app should still not be listed
+5. Open app and request Notification permissions
+6. Open Settings app - app should now be listed and include Notification _and_ Location settings
